@@ -9,11 +9,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform playerSpawnPoint;
 
     private Rigidbody2D rigidbody;
+    private Animator animatorController;
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         enemyLOS = GetComponent<LOS>();
+        animatorController = GetComponent<Animator>();
     }
 
     void Update()
@@ -31,6 +33,7 @@ public class EnemyController : MonoBehaviour
         {
             if (enemyLOS.collidesWith.gameObject.name == "Player")
             {
+                animatorController.SetBool("PlayerSeen", true);
                 return true;
             }
         }
