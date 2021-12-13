@@ -35,6 +35,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animatorController = GetComponent<Animator>();
+        PlayerPrefs.SetInt("coins", coins);
+        PlayerPrefs.SetInt("lives", lives);
     }
 
     void Update()
@@ -118,6 +120,7 @@ public class PlayerBehaviour : MonoBehaviour
     public void DecrementPlayerLives()
     {
         lives--;
+        PlayerPrefs.SetInt("lives", lives);
     }
     
     public int GetLives()
@@ -149,6 +152,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             IncrementCoins();
+            PlayerPrefs.SetInt("coins", coins);
         }
     }
 
