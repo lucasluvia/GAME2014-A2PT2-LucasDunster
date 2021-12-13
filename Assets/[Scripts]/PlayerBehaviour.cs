@@ -143,6 +143,10 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.SetParent(other.transform);
         }
+        if (other.gameObject.CompareTag("Flag"))
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
