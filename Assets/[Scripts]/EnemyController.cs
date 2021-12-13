@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private LOS enemyLOS;
     [SerializeField] private float runForce;
+    [SerializeField] private Transform playerSpawnPoint;
 
     private Rigidbody2D rigidbody;
 
@@ -36,4 +37,11 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.transform.position = playerSpawnPoint.position;
+        }
+    }
 }
