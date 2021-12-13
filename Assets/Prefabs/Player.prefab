@@ -98,6 +98,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   airControlFactor: 0.5
+  animationState: 0
 --- !u!212 &5565458458950173008
 SpriteRenderer:
   m_ObjectHideFlags: 0

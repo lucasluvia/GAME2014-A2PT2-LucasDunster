@@ -22,8 +22,11 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private AnimationState animationState;
 
+    private bool doubleJump = true;
+
     private Rigidbody2D rigidbody;
     private Animator animatorController;
+    
 
     void Start()
     {
@@ -42,8 +45,10 @@ public class PlayerBehaviour : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal") + joystick.Horizontal;
         float jump = Input.GetAxisRaw("Jump") + ((UIController.isJumpButtonPressed) ? 1.0f : 0.0f);
 
+
         if (isGrounded)
         {
+            doubleJump = true;
             if (x != 0)
             {
                 x = FlipAnimation(x);
@@ -58,13 +63,14 @@ public class PlayerBehaviour : MonoBehaviour
 
             float horizontalMoveForce = x * horizontalForce;
             float jumpMoveForce = jump * verticalForce;
-            float mass = rigidbody.mass * rigidbody.gravityScale; 
-            
+            float mass = rigidbody.mass * rigidbody.gravityScale;
+
             rigidbody.AddForce(new Vector2(horizontalMoveForce, jumpMoveForce) * mass);
             rigidbody.velocity *= 0.99f;
         }
         else
         {
+            
             animatorController.SetInteger("PlayerState", (int)AnimationState.JUMP);
             animationState = AnimationState.JUMP;
 
@@ -84,6 +90,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.CircleCast(groundOrigin.position, groundRadius, Vector2.down, groundRadius, groundLayerMask);
         isGrounded = (hit) ? true : false;
+        
     }
 
     private float FlipAnimation(float x)

@@ -37,4 +37,5 @@ public class UIController : MonoBehaviour
     {
         isJumpButtonPressed = false;
     }
+
 }
