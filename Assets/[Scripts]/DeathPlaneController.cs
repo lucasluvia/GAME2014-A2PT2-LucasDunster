@@ -10,12 +10,14 @@ using UnityEngine;
 public class DeathPlaneController : MonoBehaviour
 {
     [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField] private PlayerBehaviour player;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             other.transform.position = playerSpawnPoint.position;
+            player.DecrementPlayerLives();
         }
         else
         {

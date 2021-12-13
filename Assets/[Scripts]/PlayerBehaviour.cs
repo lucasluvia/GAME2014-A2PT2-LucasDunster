@@ -6,6 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] private AnimationState animationState;
 
     private bool doubleJump = true;
+    private int lives = 5;
+    private int coins = 0;
 
     private Rigidbody2D rigidbody;
     private Animator animatorController;
@@ -36,6 +39,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
+        CheckLives();
         CheckIfGrounded();
         Move();
     }
@@ -101,15 +105,50 @@ public class PlayerBehaviour : MonoBehaviour
         return x;
     }
 
+    public void IncrementCoins()
+    {
+        coins++;
+    }
+    
+    public int GetCoins()
+    {
+        return coins;
+    }
+    
+    public void DecrementPlayerLives()
+    {
+        lives--;
+    }
+    
+    public int GetLives()
+    {
+        return lives;
+    }
+
+    private void CheckLives()
+    {
+        if(lives <= 0)
+        {
+            //save required data
+            SceneManager.LoadScene("GameOver");
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Platform"))
         {
             transform.SetParent(other.transform);
         }
-        if (other.gameObject.CompareTag("Death"))
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.CompareTag("Coin"))
         {
-            transform.SetParent(other.transform);
+            other.gameObject.SetActive(false);
+            IncrementCoins();
         }
     }
 

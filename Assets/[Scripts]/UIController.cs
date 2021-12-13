@@ -6,11 +6,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 public class UIController : MonoBehaviour
 {
     [SerializeField] private GameObject onscreenControls;
+    [SerializeField] private TextMeshProUGUI LivesText;
+    [SerializeField] private TextMeshProUGUI CoinsText;
+    [SerializeField] private PlayerBehaviour player;
     public static bool isJumpButtonPressed;
 
     void Start()
@@ -26,6 +30,12 @@ public class UIController : MonoBehaviour
                 onscreenControls.SetActive(false);
                 break;
         }
+    }
+
+    void Update()
+    {
+        LivesText.text = player.GetLives().ToString();
+        CoinsText.text = player.GetCoins().ToString();
     }
 
     public void OnJumpButton_Down()

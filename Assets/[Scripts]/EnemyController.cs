@@ -1,3 +1,8 @@
+// EnemyController.cs
+// Lucas Dunster 101230948
+// DLM: 12/12/21
+// Controls enemy behaviour
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +12,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private LOS enemyLOS;
     [SerializeField] private float runForce;
     [SerializeField] private Transform playerSpawnPoint;
+    [SerializeField] private PlayerBehaviour player;
 
     private Rigidbody2D rigidbody;
     private Animator animatorController;
@@ -45,6 +51,7 @@ public class EnemyController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.transform.position = playerSpawnPoint.position;
+            player.DecrementPlayerLives();
         }
     }
 }

@@ -1,3 +1,8 @@
+// BreakingPlatform.cs
+// Lucas Dunster 101230948
+// DLM: 12/12/21
+// Behaviour for a platform that breaks and restores itself after being stepped on
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,8 @@
+// LOS.cs
+// Lucas Dunster 101230948
+// DLM: 12/12/21
+// Can be attatched to other components to use Line of Sight detection
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
