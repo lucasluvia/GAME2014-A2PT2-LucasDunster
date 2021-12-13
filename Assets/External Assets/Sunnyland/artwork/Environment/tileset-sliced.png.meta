@@ -229,13 +229,13 @@ TextureImporter:
     second: tileset-sliced_74
   - first:
       213: 21300150
-    second: tileset-sliced_75
+    second: floater1
   - first:
       213: 21300152
-    second: tileset-sliced_76
+    second: floater2
   - first:
       213: 21300154
-    second: tileset-sliced_77
+    second: floater3
   - first:
       213: 21300156
     second: tileset-sliced_78
@@ -2086,7 +2086,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-sliced_75
+      name: floater1
       rect:
         serializedVersion: 2
         x: 240
@@ -2107,7 +2107,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-sliced_76
+      name: floater2
       rect:
         serializedVersion: 2
         x: 272
@@ -2128,7 +2128,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tileset-sliced_77
+      name: floater3
       rect:
         serializedVersion: 2
         x: 304
